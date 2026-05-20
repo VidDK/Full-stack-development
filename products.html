@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trgovina – Make it happen!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="index.html">Make it happen!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#glavniMeni">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="glavniMeni">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Domov</a></li>
+                <li class="nav-item"><a class="nav-link" href="events.html">Dogodki</a></li>
+                <li class="nav-item"><a class="nav-link active" href="products.html">Trgovina</a></li>
+                <li class="nav-item"><a class="nav-link" href="calendar.html">Koledar</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Račun</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="profile.html">Registracija</a></li>
+                        <li><a class="dropdown-item" href="podjetnik_profile.html">Podjetnik (prijava)</a></li>
+                        <li><hr class="dropdown-divider" style="border-color:#525252;"></li>
+                        <li><a class="dropdown-item" href="admin_dashboard.html">Admin</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="o_nas.html">O nas</a></li>
+                <li class="nav-item"><a class="nav-link" href="settings.html">Nastavitve</a></li>
+            </ul>
+            <a href="kosarica.html" class="nav-link position-relative me-2">
+                🛒
+                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-badge" style="display:none;">0</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4 mb-5">
+    <h1 class="mb-1" style="color: var(--text-primary);">Trgovina</h1>
+    <p style="color: var(--text-primary);" class="mb-4">Izberite iz naše ponudbe aktivnosti in doživetij.</p>
+
+    <!-- Kartice – napolni script.js iz /api/products -->
+    <div class="row g-4" id="kartice-produktov">
+        <!-- Statični fallback, če API ni dosegljiv -->
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card product-card h-100">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=200&fit=crop" alt="Koncert">
+                <div class="card-body">
+                    <h5 class="card-title">Rock koncert – Siddharta</h5>
+                    <p class="card-text">Živahna odrska energija in nepozabno vzdušje.</p>
+                    <p class="product-price">15 €</p>
+                    <div class="d-flex gap-2">
+                        <a href="product_detail.html" class="btn btn-secondary btn-sm">Več info</a>
+                        <button class="btn btn-primary btn-sm btn-dodaj-v-kosarico" data-id="1" data-ime="Rock koncert – Siddharta" data-cena="15">+ Košarica</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card product-card h-100">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=200&fit=crop" alt="Cafe">
+                <div class="card-body">
+                    <h5 class="card-title">Rooster Cafe – Darilni bon</h5>
+                    <p class="card-text">Bon za dve osebi, vključno s kosilom.</p>
+                    <p class="product-price">24 €</p>
+                    <div class="d-flex gap-2">
+                        <a href="product_detail.html" class="btn btn-secondary btn-sm">Več info</a>
+                        <button class="btn btn-primary btn-sm btn-dodaj-v-kosarico" data-id="2" data-ime="Rooster Cafe – Bon" data-cena="24">+ Košarica</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card product-card h-100">
+                <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=400&h=200&fit=crop" alt="Galerija">
+                <div class="card-body">
+                    <h5 class="card-title">Umetnostna galerija – Vstopnica</h5>
+                    <p class="card-text">Vstopnica + vodeni ogled razstave.</p>
+                    <p class="product-price">8 €</p>
+                    <div class="d-flex gap-2">
+                        <a href="product_detail.html" class="btn btn-secondary btn-sm">Več info</a>
+                        <button class="btn btn-primary btn-sm btn-dodaj-v-kosarico" data-id="3" data-ime="Galerija – Vstopnica" data-cena="8">+ Košarica</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card product-card h-100">
+                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=200&fit=crop" alt="Kino">
+                <div class="card-body">
+                    <h5 class="card-title">KinoBox – Filmska vstopnica</h5>
+                    <p class="card-text">Vstopnica za katerikoli film v maju 2026.</p>
+                    <p class="product-price">7 €</p>
+                    <div class="d-flex gap-2">
+                        <a href="product_detail.html" class="btn btn-secondary btn-sm">Več info</a>
+                        <button class="btn btn-primary btn-sm btn-dodaj-v-kosarico" data-id="4" data-ime="KinoBox – Vstopnica" data-cena="7">+ Košarica</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card product-card h-100">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=200&fit=crop" alt="Fitnes">
+                <div class="card-body">
+                    <h5 class="card-title">Fitness Pass – Mesečni</h5>
+                    <p class="card-text">Neomejeni obiski fitnes centra za 30 dni.</p>
+                    <p class="product-price">39 €</p>
+                    <div class="d-flex gap-2">
+                        <a href="product_detail.html" class="btn btn-secondary btn-sm">Več info</a>
+                        <button class="btn btn-primary btn-sm btn-dodaj-v-kosarico" data-id="5" data-ime="Fitness Pass" data-cena="39">+ Košarica</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card product-card h-100">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=200&fit=crop" alt="Vecerja">
+                <div class="card-body">
+                    <h5 class="card-title">Gurmansko večerjo – 2 osebi</h5>
+                    <p class="card-text">Ekskluzivna večerja v restavraciji v Mariboru.</p>
+                    <p class="product-price">68 €</p>
+                    <div class="d-flex gap-2">
+                        <a href="product_detail.html" class="btn btn-secondary btn-sm">Več info</a>
+                        <button class="btn btn-primary btn-sm btn-dodaj-v-kosarico" data-id="6" data-ime="Gurmansko večerjo" data-cena="68">+ Košarica</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert košarica -->
+    <div id="cart-alert" class="alert alert-success alert-dismissible mt-4" style="display:none;">
+        Izdelek dodan v košarico! <a href="kosarica.html" class="alert-link">Poglej košarico</a>
+        <button type="button" class="btn-close" onclick="this.parentElement.style.display='none'"></button>
+    </div>
+
+    <!-- Tabela vseh produktov -->
+    <h2 class="mt-5 mb-3" style="color: var(--text-primary);">Vsi izdelki</h2>
+    <div style="background-color: var(--bg-secondary); border-radius: 15px; padding: 20px;">
+        <div class="table-responsive">
+            <table class="table table-sm mb-0">
+                <thead>
+                    <tr style="border-bottom: 1px solid var(--bg-tertiary);">
+                        <th style="color:var(--text-primary);">#</th>
+                        <th style="color:var(--text-primary);">Slika</th>
+                        <th style="color:var(--text-primary);">Naziv</th>
+                        <th style="color:var(--text-primary);">Kategorija</th>
+                        <th style="color:var(--text-primary);">Cena</th>
+                        <th style="color:var(--text-primary);">Ocena</th>
+                        <th style="color:var(--text-primary);"></th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-body">
+                    <!-- Napolni script.js -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3">
+                <h5>Make it happen!</h5>
+                <p>Platforma za odkrivanje dogodkov in aktivnosti v vaši okolici.</p>
+            </div>
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Navigacija</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html">Domov</a></li>
+                    <li><a href="events.html">Dogodki</a></li>
+                    <li><a href="products.html">Trgovina</a></li>
+                    <li><a href="calendar.html">Koledar</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Račun</h5>
+                <ul class="list-unstyled">
+                    <li><a href="profile.html">Registracija</a></li>
+                    <li><a href="podjetnik_profile.html">Podjetnik</a></li>
+                    <li><a href="admin_dashboard.html">Admin</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+                <h5>Kontakt</h5>
+                <p>📧 info@makeithatpen.si</p>
+                <p>📞 +386 1 234 567</p>
+                <p>📍 Gosposvetska 83, Maribor</p>
+            </div>
+        </div>
+        <hr>
+        <p class="text-center" style="font-size: 13px; color: rgb(150,150,150);">© 2026 Make it happen! Vse pravice pridržane.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

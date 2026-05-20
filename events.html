@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogodki – Make it happen!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="index.html">Make it happen!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#glavniMeni">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="glavniMeni">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Domov</a></li>
+                <li class="nav-item"><a class="nav-link active" href="events.html">Dogodki</a></li>
+                <li class="nav-item"><a class="nav-link" href="products.html">Trgovina</a></li>
+                <li class="nav-item"><a class="nav-link" href="calendar.html">Koledar</a></li>                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Račun</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="profile.html">Registracija</a></li>
+                        <li><a class="dropdown-item" href="podjetnik_profile.html">Podjetnik (prijava)</a></li>
+                        <li><hr class="dropdown-divider" style="border-color:#525252;"></li>
+                        <li><a class="dropdown-item" href="admin_dashboard.html">Admin</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="o_nas.html">O nas</a></li>
+                <li class="nav-item"><a class="nav-link" href="settings.html">Nastavitve</a></li>
+            </ul>
+            <a href="kosarica.html" class="nav-link position-relative me-2">
+                🛒
+                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-badge" style="display:none;">0</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4 mb-5">
+    <h1 class="mb-1" style="color: var(--text-primary);">Dogodki</h1>
+    <p class="mb-3" style="color: var(--text-primary);">Odkrijte, kar se dogaja v vaši okolici.</p>
+
+    <!-- Search -->
+    <div class="mb-3" style="max-width: 500px;">
+        <input type="text" class="form-control" placeholder="Išči dogodke...">
+    </div>
+
+    <!-- Promo banner -->
+    <div class="promo-banner mb-4">
+        <p> AKCIJA: 15% popust na vse ponudbe, poteče čez</p>
+        <span id="countdown-timer"></span>
+    </div>
+
+    <!-- Dogodki -->
+    <div class="event-card">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=160&fit=crop" alt="Koncert">
+        <div class="event-card-body">
+            <div>
+                <h3>Rock koncert skupine Siddharta</h3>
+                <p><strong>Kje?</strong> Gosposvetska cesta 83, Maribor<br>
+                   <strong>Kdaj?</strong> 31.3.2026 ob 18:00</p>
+            </div>
+            <a href="product_detail.html" class="btn btn-secondary btn-sm">Prikaži več</a>
+        </div>
+    </div>
+
+    <div class="event-card">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&h=160&fit=crop" alt="Cafe">
+        <div class="event-card-body">
+            <div>
+                <h3>Rooster Cafe</h3>
+                <p><strong>Kje?</strong> Ulica 10. oktobra, Maribor<br>
+                   <strong>Delovni čas:</strong> 8:00 – 19:00</p>
+            </div>
+            <a href="#" class="btn btn-secondary btn-sm">Prikaži več</a>
+        </div>
+    </div>
+
+    <div class="event-card">
+        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=200&h=160&fit=crop" alt="Galerija">
+        <div class="event-card-body">
+            <div>
+                <h3>Umetnostna galerija Maribor</h3>
+                <p><strong>Kje?</strong> Strossmayerjeva ulica 6, Maribor<br>
+                   <strong>Delovni čas:</strong> 10:00 – 18:00</p>
+            </div>
+            <a href="#" class="btn btn-secondary btn-sm">Prikaži več</a>
+        </div>
+    </div>
+
+    <div class="event-card">
+        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=200&h=160&fit=crop" alt="Kino">
+        <div class="event-card-body">
+            <div>
+                <h3>KinoBox</h3>
+                <p><strong>Kje?</strong> Loška ulica 13, Maribor<br>
+                   <strong>Delovni čas:</strong> 10:00 – 23:00</p>
+            </div>
+            <a href="#" class="btn btn-secondary btn-sm">Prikaži več</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3">
+                <h5>Make it happen!</h5>
+                <p>Platforma za odkrivanje dogodkov in aktivnosti v vaši okolici.</p>
+            </div>
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Navigacija</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html">Domov</a></li>
+                    <li><a href="events.html">Dogodki</a></li>
+                    <li><a href="products.html">Trgovina</a></li>
+                    <li><a href="calendar.html">Koledar</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Račun</h5>
+                <ul class="list-unstyled">
+                    <li><a href="profile.html">Registracija</a></li>
+                    <li><a href="podjetnik_profile.html">Podjetnik</a></li>
+                    <li><a href="admin_dashboard.html">Admin</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+                <h5>Kontakt</h5>
+                <p>📧 info@makeithatpen.si</p>
+                <p>📞 +386 1 234 567</p>
+                <p>📍 Gosposvetska 83, Maribor</p>
+            </div>
+        </div>
+        <hr>
+        <p class="text-center" style="font-size: 13px; color: rgb(150,150,150);">© 2026 Make it happen! Vse pravice pridržane.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

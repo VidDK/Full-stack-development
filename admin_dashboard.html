@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin – Make it happen!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="index.html">Make it happen!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#glavniMeni"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="glavniMeni">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Domov</a></li>
+                <li class="nav-item"><a class="nav-link" href="events.html">Dogodki</a></li>
+                <li class="nav-item"><a class="nav-link" href="products.html">Trgovina</a></li>
+                <li class="nav-item"><a class="nav-link" href="calendar.html">Koledar</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown">Račun</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="profile.html">Registracija</a></li>
+                        <li><a class="dropdown-item" href="podjetnik_profile.html">Podjetnik (prijava)</a></li>
+                        <li><hr class="dropdown-divider" style="border-color:#525252;"></li>
+                        <li><a class="dropdown-item" href="admin_dashboard.html">Admin</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="o_nas.html">O nas</a></li>
+                <li class="nav-item"><a class="nav-link" href="settings.html">Nastavitve</a></li>
+            </ul>
+            <a href="kosarica.html" class="nav-link position-relative me-2">🛒<span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-badge" style="display:none;">0</span></a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4 mb-5">
+    <h1 class="mb-4" style="color: var(--text-primary);">Admin – Nadzorna plošča</h1>
+
+    <!-- Sporočilo za neprijavljene / ne-admin -->
+    <div id="ni-admin-sporocilo" class="alert alert-warning" style="display:none;">
+        Ta stran je samo za administratorje. <a href="podjetnik_profile.html">Prijavite se</a>.
+    </div>
+
+    <!-- Admin vsebina – vidna samo adminstratorju -->
+    <div id="admin-razdelek" style="display:none;">
+
+        <!-- Statistike -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="stat-card"><p>Uporabniki</p><h3>23.431</h3></div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="stat-card"><p>Aktivnosti</p><h3>7.842</h3></div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="stat-card"><p>Dohodek</p><h3>20.132,76 €</h3></div>
+            </div>
+        </div>
+
+        <!-- Tabela izdelkov -->
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <h2 style="color: var(--text-primary); font-size: 20px; margin: 0;">Upravljanje izdelkov</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dodajIzdelekModal">+ Dodaj nov izdelek</button>
+        </div>
+
+        <div style="background-color: var(--bg-secondary); border-radius: 15px; padding: 20px;">
+            <div class="table-responsive">
+                <table class="table table-sm mb-0">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--bg-tertiary);">
+                            <th style="color:var(--text-primary);">#</th>
+                            <th style="color:var(--text-primary);">Slika</th>
+                            <th style="color:var(--text-primary);">Naziv</th>
+                            <th style="color:var(--text-primary);">Kategorija</th>
+                            <th style="color:var(--text-primary);">Cena</th>
+                            <th style="color:var(--text-primary);"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-tabela-body">
+                        <!-- Napolni adminPrikaziTabelo() -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Dodaj nov izdelek -->
+<div class="modal fade" id="dodajIzdelekModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: var(--text-primary);">Dodaj nov izdelek</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="dodaj-napaka" class="alert alert-danger" style="display:none;"></div>
+                <div class="mb-3">
+                    <label class="form-label">Naziv *</label>
+                    <input type="text" class="form-control" id="novi-naziv" placeholder="npr. Vstopnica za koncert">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Kratki opis</label>
+                    <input type="text" class="form-control" id="novi-opis" placeholder="Kratek opis izdelka">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dolgi opis</label>
+                    <textarea class="form-control" id="novi-opisDolgi" rows="3"></textarea>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-6">
+                        <label class="form-label">Cena (€) *</label>
+                        <input type="number" class="form-control" id="nova-cena" min="0" step="0.01">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Popust (%)</label>
+                        <input type="number" class="form-control" id="novi-popust" min="0" max="100" value="0">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Kategorija</label>
+                    <select class="form-select" id="nova-kategorija">
+                        <option value="Glasba">Glasba</option>
+                        <option value="Kulinarika">Kulinarika</option>
+                        <option value="Kultura">Kultura</option>
+                        <option value="Film">Film</option>
+                        <option value="Šport">Šport</option>
+                        <option value="Ostalo" selected>Ostalo</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">URL slike</label>
+                    <input type="text" class="form-control" id="nova-src" placeholder="https://...">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Prekliči</button>
+                <button type="button" class="btn btn-primary" onclick="adminDodajIzdelek()">Shrani</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3"><h5>Make it happen!</h5><p>Platforma za odkrivanje dogodkov.</p></div>
+            <div class="col-6 col-md-4 mb-3"><h5>Navigacija</h5><ul class="list-unstyled"><li><a href="index.html">Domov</a></li><li><a href="events.html">Dogodki</a></li></ul></div>
+            <div class="col-6 col-md-4 mb-3"><h5>Kontakt</h5><p>📧 info@makeithatpen.si</p></div>
+        </div>
+        <hr>
+        <p class="text-center" style="font-size: 13px; color: rgb(150,150,150);">© 2026 Make it happen! Vse pravice pridržane.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
